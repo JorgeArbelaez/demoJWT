@@ -17,7 +17,9 @@ namespace IdentityServer
 
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[] 
-            { };
+            {
+                new ApiResource("api1", "My API")
+            };
         
         public static IEnumerable<Client> Clients =>
             new Client[] 
