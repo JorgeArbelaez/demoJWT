@@ -11,19 +11,30 @@ namespace IdentityServer
     {
         public static IEnumerable<IdentityResource> Ids =>
             new IdentityResource[]
-            { 
+            {
                 new IdentityResources.OpenId()
             };
 
         public static IEnumerable<ApiResource> Apis =>
-            new ApiResource[] 
+            new ApiResource[]
             {
                 new ApiResource("api1", "My API")
             };
-        
+
         public static IEnumerable<Client> Clients =>
-            new Client[] 
-            { };
-        
+            new Client[]
+            {
+                new Client
+                {
+                    // No interactive user, use ClientId/Secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientId = "Client",
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    AllowedScopes = { "api1" }
+                }
+            };
     }
 }
