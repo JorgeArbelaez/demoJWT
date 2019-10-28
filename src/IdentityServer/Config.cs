@@ -24,7 +24,7 @@ namespace IdentityServer
                 {
                     // No interactive user, use ClientId/Secret for authentication
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientId = "Client",
+                    ClientId = "client",
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())
